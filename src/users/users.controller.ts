@@ -31,7 +31,8 @@ export class UsersController {
     return this.usersService.generateUserResponse(user, 'User successfully logged in', 'token');
   }
 
-  @ApiBearerAuth()
+  // @ApiBearerAuth()
+  @Public()
   @Get('all')
   @ApiOperation({ summary: 'Get all users' })
   @ApiResponse({ status: 200, description: 'List of all users' })

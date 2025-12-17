@@ -13,6 +13,8 @@ import { MatchModule } from './match/match.module';
 import { SessionModule } from './session/session.module';
 import { MessageModule } from './message/message.module';
 import { RatingModule } from './rating/rating.module';
+import { AuthGuard } from './users/guards/auth.guards';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -33,6 +35,12 @@ import { RatingModule } from './rating/rating.module';
     RatingModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    {
+      useClass: AuthGuard,
+      provide: APP_GUARD
+    },
+    AppService
+  ],
 })
 export class AppModule { }

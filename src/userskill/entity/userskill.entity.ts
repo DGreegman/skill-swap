@@ -31,7 +31,7 @@ export class Userskill {
     @Column()
     userId: string;
 
-    @Column()
+    @Column({default: null})
     skillId: string;
 
     // Relations
@@ -40,14 +40,14 @@ export class Userskill {
         eager: false,
     })
     @JoinColumn({ name: 'userId' })
-  user: User;
+    user: User;
 
-  @ManyToOne(() => Skill, (skill) => skill.userSkills, {
-    onDelete: 'CASCADE',
-    eager: true,
-  })
-  @JoinColumn({ name: 'skillId' })
-  skill: Skill;
+    @ManyToOne(() => Skill, (skill) => skill.userSkills, {
+      onDelete: 'CASCADE',
+      eager: true,
+    })
+    @JoinColumn({ name: 'skillId' })
+    skill: Skill;
 
     /* // Relations
     @ManyToOne(() => User, { nullable: false })

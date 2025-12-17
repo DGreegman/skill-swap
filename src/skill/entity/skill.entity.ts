@@ -32,13 +32,13 @@ export class Skill {
     @CreateDateColumn()
     createdAt: Date;
 
-       // Relations
-        @OneToMany(() => Userskill, (userSkill) => userSkill.skill, { cascade: true })
-        userSkills: Userskill[];
-    
-        @OneToMany(() => Offer, (offer) => offer.skill, { cascade: false })
-        offers: Offer[];
-    
-        @OneToMany(() => Request, (request) => request.skill, { cascade: false })
-        requests: Request[];
+    // Relations
+    @OneToMany(() => Userskill, (userSkill) => userSkill.skill, { cascade: true })
+    userSkills: Userskill[];
+
+    @OneToMany(() => Offer, (offer) => offer.skill, { cascade: false })
+    offers: Offer[];
+
+    @OneToMany(() => Request, (request) => request.skill, { cascade: false })
+    requests: Request[];
 }   

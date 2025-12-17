@@ -11,6 +11,7 @@ import { ConfigService } from "@nestjs/config";
   providers: [UsersService],
   imports: [
     TypeOrmModule.forFeature([User]),
+    
     JwtModule.registerAsync({
       global: true,
       useFactory: async (configService: ConfigService) => ({
