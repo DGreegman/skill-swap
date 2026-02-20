@@ -5,6 +5,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UserResponse } from './interface/user-response.interface';
 import { LoginDTO } from './dto/login.dto'
 import { Public } from './decorators/auth.decorator';
+import { Roles } from './decorators/role.decorator';
+import { Role } from './entity/user.entity';
 
 @ApiTags('Authentication')
 @Controller('auth')
@@ -31,8 +33,9 @@ export class UsersController {
     return this.usersService.generateUserResponse(user, 'User successfully logged in', 'token');
   }
 
-  // @ApiBearerAuth()
-  @Public()
+  @ApiBearerAuth()
+  // @Public()
+  @Roles(Role.ADMIN)
   @Get('all')
   @ApiOperation({ summary: 'Get all users' })
   @ApiResponse({ status: 200, description: 'List of all users' })

@@ -16,6 +16,7 @@ import { RatingModule } from './rating/rating.module';
 import { AuthGuard } from './users/guards/auth.guards';
 import { APP_GUARD } from '@nestjs/core';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),

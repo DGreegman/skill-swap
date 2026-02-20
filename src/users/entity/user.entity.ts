@@ -7,7 +7,7 @@ import { Session } from "@/session/enitity/session.entity";
 import { Userskill } from "@/userskill/entity/userskill.entity";
 import { Column, CreateDateColumn, Entity, Index, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-export enum UserRole {
+export enum Role {
     USER = 'user',
     ADMIN = 'admin'
 }
@@ -27,8 +27,8 @@ export class User{
     @Column()
     password: string;
 
-    @Column({ type: 'enum', enum: UserRole, default: UserRole.USER, nullable: true })
-    role: UserRole;
+    @Column({ type: 'enum', enum: Role, default: Role.USER, nullable: true })
+    role: Role;
 
     @Column({nullable: true})
     bio: string;
