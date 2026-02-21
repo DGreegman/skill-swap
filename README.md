@@ -1,6 +1,7 @@
 # 🔄 Skill-Swap
 
-> A modern peer-to-peer skill exchange platform built with NestJS, TypeORM, and PostgreSQL
+> A modern peer-to-peer skill exchange platform built with NestJS, TypeORM, and
+> PostgreSQL
 
 [![NestJS](https://img.shields.io/badge/NestJS-11.0-E0234E?logo=nestjs)](https://nestjs.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript)](https://www.typescriptlang.org/)
@@ -10,16 +11,23 @@
 
 ## 📖 Overview
 
-Skill-Swap is a platform that connects people who want to learn new skills with those who can teach them. Whether you're a developer wanting to learn design, a musician wanting to learn coding, or anyone looking to exchange knowledge - Skill-Swap makes it easy to find the perfect match.
+Skill-Swap is a platform that connects people who want to learn new skills with
+those who can teach them. Whether you're a developer wanting to learn design, a
+musician wanting to learn coding, or anyone looking to exchange knowledge -
+Skill-Swap makes it easy to find the perfect match.
 
 ### ✨ Key Features
 
-- 🎯 **Smart Matching Algorithm** - Automatically matches skill offers with requests based on compatibility scores
-- 👥 **User Profiles** - Comprehensive profiles with skill portfolios and proficiency levels
-- 📅 **Session Scheduling** - Built-in scheduling system with meeting link integration
+- 🎯 **Smart Matching Algorithm** - Automatically matches skill offers with
+  requests based on compatibility scores
+- 👥 **User Profiles** - Comprehensive profiles with skill portfolios and
+  proficiency levels
+- 📅 **Session Scheduling** - Built-in scheduling system with meeting link
+  integration
 - 💬 **Real-time Messaging** - In-session chat for seamless communication
 - ⭐ **Rating System** - Post-session feedback to build trust and reputation
-- 🔍 **Advanced Search** - Filter by skill category, urgency level, and availability
+- 🔍 **Advanced Search** - Filter by skill category, urgency level, and
+  availability
 - 🔐 **Secure Authentication** - JWT-based authentication with refresh tokens
 - 📊 **Analytics Dashboard** - Track your learning journey and teaching impact
 
@@ -27,10 +35,15 @@ Skill-Swap is a platform that connects people who want to learn new skills with 
 
 ### Tech Stack
 
-- **Backend Framework**: [NestJS](https://nestjs.com/) - Progressive Node.js framework
-- **Database**: [PostgreSQL](https://www.postgresql.org/) - Reliable relational database
-- **ORM**: [TypeORM](https://typeorm.io/) - TypeScript-first ORM with excellent PostgreSQL support
-- **Validation**: [class-validator](https://github.com/typestack/class-validator) - Decorator-based validation
+- **Backend Framework**: [NestJS](https://nestjs.com/) - Progressive Node.js
+  framework
+- **Database**: [PostgreSQL](https://www.postgresql.org/) - Reliable relational
+  database
+- **ORM**: [TypeORM](https://typeorm.io/) - TypeScript-first ORM with excellent
+  PostgreSQL support
+- **Validation**:
+  [class-validator](https://github.com/typestack/class-validator) -
+  Decorator-based validation
 - **Authentication**: JWT (JSON Web Tokens) with refresh token rotation
 
 ### Database Schema
@@ -90,7 +103,7 @@ skill-swap/
    ```
 
 3. **Set up environment variables**
-   
+
    Create a `.env` file in the root directory:
    ```env
    # Database
@@ -138,51 +151,35 @@ The API will be available at `http://localhost:3000`
 
 ## 📚 API Documentation
 
-### Authentication
+The API is fully documented using **Swagger/OpenAPI**. You can access the
+interactive documentation to explore and test all endpoints:
+
+🌐 **[Live API Documentation](http://localhost:3000/api-docs)**
+
+### Key Endpoint Examples
+
+#### Authentication
 
 ```bash
 # Register a new user
-POST /auth/register
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "securePassword123"
-}
+POST /api/v1/auth/register
 
 # Login
-POST /auth/login
-{
-  "email": "john@example.com",
-  "password": "securePassword123"
-}
+POST /api/v1/auth/login
 ```
 
-### Skills Management
+#### Skills Management
 
 ```bash
 # Add a skill to your profile
-POST /userskills
-{
-  "skillId": "uuid",
-  "proficiencyLevel": 3,
-  "yearsOfExperience": 2
-}
+POST /api/v1/userskills
 
 # Create an offer to teach
-POST /offers
+POST /api/v1/offer
 {
   "skillId": "uuid",
   "description": "I can teach web development basics",
   "availability": "Mon, Wed, Fri 6pm-8pm"
-}
-
-# Create a request to learn
-POST /requests
-{
-  "skillId": "uuid",
-  "description": "Looking to learn guitar",
-  "urgencyLevel": "medium",
-  "preferredTimeSlots": "Weekends"
 }
 ```
 
@@ -204,8 +201,6 @@ POST /sessions
   "meetingLink": "https://meet.google.com/xyz"
 }
 ```
-
-> 📖 **Full API documentation coming soon with Swagger/OpenAPI**
 
 ## 🧪 Testing
 
@@ -282,11 +277,12 @@ We welcome contributions! Here's how you can help:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [@DGreegman](https://github.com/DGreegman)
+- **Your Name** - _Initial work_ - [@DGreegman](https://github.com/DGreegman)
 
 ## 🙏 Acknowledgments
 

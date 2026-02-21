@@ -29,6 +29,10 @@ async function bootstrap() {
     .addBearerAuth()
     .build();
 
+    // Set global prefix AFTER Swagger setup, excluding api-docs
+    app.setGlobalPrefix('api/v1', {
+      exclude: ['api-docs'],
+    });
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document, {
     swaggerOptions: {
@@ -37,10 +41,6 @@ async function bootstrap() {
     customSiteTitle: 'Skill Swap API Documentation',
   });
 
-  // Set global prefix AFTER Swagger setup, excluding api-docs
-  app.setGlobalPrefix('api/v1', {
-    exclude: ['api-docs'],
-  });
 
   app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(process.env.PORT ?? 3000);

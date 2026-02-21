@@ -34,7 +34,7 @@ export class UsersController {
   }
 
   @ApiBearerAuth()
-  // @Public()
+  @Public()
   @Roles(Role.ADMIN)
   @Get('all')
   @ApiOperation({ summary: 'Get all users' })
