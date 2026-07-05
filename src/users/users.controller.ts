@@ -5,8 +5,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UserResponse } from './interface/user-response.interface';
 import { LoginDTO } from './dto/login.dto'
 import { Public } from './decorators/auth.decorator';
-import { Roles } from './decorators/role.decorator';
-import { Role } from './entity/user.entity';
 
 @ApiTags('Authentication')
 @Controller('auth')

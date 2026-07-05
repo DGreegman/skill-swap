@@ -27,7 +27,7 @@ export class UsersService {
         try {
             return await this.userRepository.save(user);
         } catch (error) {
-            if (error.code === '23505' || error.code === 'ER_DUP_ENTRY') {
+            if (error instanceof Error && (error.code === '23505' || error.code === 'ER_DUP_ENTRY')) {
                 throw new ConflictException('User already exists');
             }
             throw error;
@@ -35,7 +35,11 @@ export class UsersService {
     }
 
     private async findUserByEmail(email: string): Promise<User | null> {
-        const user = await this.userRepository.findOne({ where: { email } });
+        const user = await this.userRepository
+            .createQueryBuilder('user')
+            .addSelect('user.password')
+            .where('user.email = :email', { email })
+            .getOne();
         if (!user) {
             return null;
         }
@@ -45,6 +49,9 @@ export class UsersService {
     async LoginUser(email: string, password: string): Promise<User> {
         const user = await this.findUserByEmail(email);
         if (!user) {
+            throw new BadRequestException('Invalid Email or Password');
+        }
+        if (!password || !user.password) {
             throw new BadRequestException('Invalid Email or Password');
         }
         const isPasswordMatch = await bcrypt.compare(password, user.password);
